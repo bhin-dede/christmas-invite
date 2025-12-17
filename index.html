@@ -7,6 +7,7 @@
   <style>
     body {
       margin: 0;
+      padding: 16px; /* 모바일 여백 */
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif;
       background: linear-gradient(180deg, #0f3d2e, #1b5e46);
       color: #ffffff;
@@ -14,6 +15,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     .card {
       background: rgba(255, 255, 255, 0.08);
@@ -21,14 +23,17 @@
       border-radius: 24px;
       padding: 32px 28px;
       max-width: 420px;
-      width: 90%;
+      width: 100%;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     .title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       margin-bottom: 8px;
+      white-space: nowrap; /* 제목 줄바꿈 방지 */
     }
     .subtitle {
       font-size: 16px;
@@ -58,11 +63,56 @@
       font-size: 14px;
       opacity: 0.85;
     }
+
+    /* 눈 내리는 효과 */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1em;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(110vh) translateX(20px);
+      }
+    }
+
+    /* 트리 흔들림 애니메이션 */
+    .tree {
+      display: inline-block;
+      animation: sway 3s ease-in-out infinite;
+    }
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(2deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @media (max-width: 360px) {
+      .title {
+        font-size: 22px; /* 아주 작은 폰에서만 크기 조절 */
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Snowflakes -->
+  <div class="snowflake" style="left: 10%; animation-duration: 8s;">❄</div>
+  <div class="snowflake" style="left: 25%; animation-duration: 10s;">❄</div>
+  <div class="snowflake" style="left: 40%; animation-duration: 7s;">❄</div>
+  <div class="snowflake" style="left: 55%; animation-duration: 9s;">❄</div>
+  <div class="snowflake" style="left: 70%; animation-duration: 11s;">❄</div>
+  <div class="snowflake" style="left: 85%; animation-duration: 8s;">❄</div>
   <div class="card">
-    <div class="title">🎄 Christmas Home Party 🎄</div>
+    <div class="title"><span class="tree">🎄</span> Christmas Home Party <span class="tree">🎄</span></div>
     <div class="subtitle">초대장</div>
 
     <div class="divider"></div>
