@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas Home Party Invitation</title>
+
+    <!-- Open Graph (Kakao preview) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="🎄 Christmas Home Party 🎄" />
+    <meta property="og:description" content="밍구 생일 파티 & 크리스마스 홈파티에 초대합니다" />
+    <meta property="og:image" content="https://bhin-dede.github.io/christmas-invite/og-image.png" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif;
+            background: linear-gradient(180deg, #0a2e4a 0%, #0f4a3e 50%, #1b5e46 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 눈 내리는 효과 */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #fff;
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 헤더 배너 */
+        .header-banner {
+            background: linear-gradient(135deg, #1a4a6e 0%, #0d3a52 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-banner::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .header-banner::after {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            animation: twinkle 2s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .header-title {
+            font-size: 14px;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .header-main {
+            font-size: 36px;
+            font-weight: 700;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.3;
+        }
+
+        .header-sub {
+            font-size: 16px;
+            margin-top: 12px;
+            opacity: 0.9;
+        }
+
+        .tree-decoration {
+            font-size: 60px;
+            margin: 20px 0;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* 섹션 스타일 */
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            margin: 16px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-header {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-icon {
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .section-content {
+            padding: 20px;
+        }
+
+        /* 테이블 스타일 */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .info-table th {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            width: 100px;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        .info-table td {
+            padding: 12px 16px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* 파티 순서 */
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-number {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .schedule-content {
+            flex: 1;
+        }
+
+        .schedule-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .schedule-desc {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        /* 안내사항 */
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-icon {
+            font-size: 18px;
+        }
+
+        /* 하이라이트 박스 */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.3), rgba(192, 57, 43, 0.3));
+            border: 1px solid rgba(231, 76, 60, 0.5);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .highlight-text {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* 푸터 */
+        .footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+        }
+
+        .footer-text {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer-sub {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer-emoji {
+            font-size: 40px;
+            margin-top: 16px;
+        }
+
+        /* 캐러셀 이미지 효과 */
+        .decoration-banner {
+            text-align: center;
+            padding: 20px;
+            font-size: 50px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+        }
+
+        /* 반응형 */
+        @media (max-width: 360px) {
+            .header-main {
+                font-size: 28px;
+            }
+
+            .section {
+                margin: 12px;
+            }
+
+            .info-table th,
+            .info-table td {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 눈 내리는 효과 -->
+    <div class="snowflake" style="left: 5%; animation-duration: 10s; font-size: 0.8em;">❄</div>
+    <div class="snowflake" style="left: 15%; animation-duration: 8s; font-size: 1.2em;">❄</div>
+    <div class="snowflake" style="left: 25%; animation-duration: 12s;">❄</div>
+    <div class="snowflake" style="left: 35%; animation-duration: 9s; font-size: 0.9em;">❄</div>
+    <div class="snowflake" style="left: 45%; animation-duration: 11s; font-size: 1.1em;">❄</div>
+    <div class="snowflake" style="left: 55%; animation-duration: 7s;">❄</div>
+    <div class="snowflake" style="left: 65%; animation-duration: 10s; font-size: 0.8em;">❄</div>
+    <div class="snowflake" style="left: 75%; animation-duration: 8s; font-size: 1.3em;">❄</div>
+    <div class="snowflake" style="left: 85%; animation-duration: 13s;">❄</div>
+    <div class="snowflake" style="left: 95%; animation-duration: 9s; font-size: 0.7em;">❄</div>
+
+    <div class="container">
+        <!-- 헤더 배너 -->
+        <div class="header-banner">
+            <div class="header-title">YOU'RE INVITED TO</div>
+            <div class="tree-decoration">🎄</div>
+            <div class="header-main">Christmas<br>Home Party</div>
+            <div class="header-sub">밍구 생일 파티 & 크리스마스 홈파티</div>
+        </div>
+
+        <!-- 행사 정보 섹션 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📋</span>
+                <span class="section-title">행사 정보</span>
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th>🗓 일시</th>
+                        <td>12월 24일 (화)<br>크리스마스 이브</td>
+                    </tr>
+                    <tr>
+                        <th>📍 장소</th>
+                        <td>초이집</td>
+                    </tr>
+                    <tr>
+                        <th>🎉 행사</th>
+                        <td>🎂 밍구 생일 파티<br>🎄 크리스마스 홈파티</td>
+                    </tr>
+                </table>
+
+                <div class="highlight-box">
+                    <div class="highlight-text">
+                        초대장을 받은 사람은 우리집으로 집합! 🏠
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 파티 순서 섹션 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🎁</span>
+                <span class="section-title">파티 순서</span>
+            </div>
+            <div class="section-content">
+                <div class="schedule-item">
+                    <div class="schedule-number">1</div>
+                    <div class="schedule-content">
+                        <div class="schedule-title">음식 주문 & 스몰 토킹</div>
+                        <div class="schedule-desc">배달 음식 주문하고 근황 토크</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-number">2</div>
+                    <div class="schedule-content">
+                        <div class="schedule-title">사진 촬영 & 저녁 식사</div>
+                        <div class="schedule-desc">인생샷 남기고 맛있게 먹기</div>
+                    </div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-number">3</div>
+                    <div class="schedule-content">
+                        <div class="schedule-title">선물 교환식</div>
+                        <div class="schedule-desc">두근두근 랜덤 선물 교환</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 음식 안내 섹션 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">🍽</span>
+                <span class="section-title">음식 안내</span>
+            </div>
+            <div class="section-content">
+                <table class="info-table">
+                    <tr>
+                        <th>메뉴</th>
+                        <td>이것저것 시켜먹을 예정!</td>
+                    </tr>
+                    <tr>
+                        <th>컨셉</th>
+                        <td>연말 · 크리스마스 · 생일 기념</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 안내사항 섹션 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📢</span>
+                <span class="section-title">안내사항</span>
+            </div>
+            <div class="section-content">
+                <ul class="notice-list">
+                    <li>
+                        <span class="notice-icon">🛏</span>
+                        <span>숙박 가능</span>
+                    </li>
+                    <li>
+                        <span class="notice-icon">🧹</span>
+                        <span>퇴실 시 청소 바람</span>
+                    </li>
+                    <li>
+                        <span class="notice-icon">⚠️</span>
+                        <span>집주인이 사나움, 물림주의 🐶</span>
+                    </li>
+                    <li>
+                        <span class="notice-icon">🚫</span>
+                        <span><strong>거절은 거절함</strong></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 장식 배너 -->
+        <div class="decoration-banner">
+            🎅🦌🎄🎁⭐
+        </div>
+
+        <!-- 푸터 -->
+        <div class="footer">
+            <div class="footer-text">Merry Christmas!</div>
+            <div class="footer-sub">2024년 연말을 함께해요</div>
+            <div class="footer-emoji">🎄🤍🎄</div>
+        </div>
+    </div>
+</body>
+</html>
