@@ -4,10 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Christmas Home Party Invitation</title>
+
+  <!-- Open Graph (Kakao preview) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="🎄 Christmas Home Party 🎄" />
+  <meta property="og:description" content="생일 파티 & 크리스마스 홈파티에 초대합니다" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=1200" />
+  <meta property="og:url" content="" />
   <style>
     body {
       margin: 0;
-      padding: 16px; /* 모바일 여백 */
+      padding: 16px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', Arial, sans-serif;
       background: linear-gradient(180deg, #0f3d2e, #1b5e46);
       color: #ffffff;
@@ -21,7 +28,7 @@
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       border-radius: 24px;
-      padding: 32px 28px;
+      padding: 32px 28px 36px;
       max-width: 420px;
       width: 100%;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
@@ -29,11 +36,21 @@
       position: relative;
       z-index: 2;
     }
+        .wreath img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+    }
+    @keyframes wreath-rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
     .title {
       font-size: 26px;
       font-weight: 700;
       margin-bottom: 8px;
-      white-space: nowrap; /* 제목 줄바꿈 방지 */
+      white-space: nowrap;
     }
     .subtitle {
       font-size: 16px;
@@ -64,7 +81,6 @@
       opacity: 0.85;
     }
 
-    /* 눈 내리는 효과 */
     .snowflake {
       position: fixed;
       top: -10px;
@@ -77,29 +93,13 @@
       opacity: 0.8;
     }
     @keyframes fall {
-      0% {
-        transform: translateY(0) translateX(0);
-      }
-      100% {
-        transform: translateY(110vh) translateX(20px);
-      }
-    }
-
-    /* 트리 흔들림 애니메이션 */
-    .tree {
-      display: inline-block;
-      animation: sway 3s ease-in-out infinite;
-    }
-    @keyframes sway {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(2deg); }
-      100% { transform: rotate(0deg); }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(110vh); }
     }
 
     @media (max-width: 360px) {
-      .title {
-        font-size: 22px; /* 아주 작은 폰에서만 크기 조절 */
-      }
+      .title { font-size: 22px; }
+      .wreath { width: 96px; height: 96px; }
     }
   </style>
 </head>
@@ -112,6 +112,7 @@
   <div class="snowflake" style="left: 70%; animation-duration: 11s;">❄</div>
   <div class="snowflake" style="left: 85%; animation-duration: 8s;">❄</div>
   <div class="card">
+    
     <div class="title"><span class="tree">🎄</span> Christmas Home Party <span class="tree">🎄</span></div>
     <div class="subtitle">초대장</div>
 
@@ -133,8 +134,20 @@
     <div class="message">
       ✨✨✨<br />
       음식은 이것저것 시켜먹을거임<br />
-      연말, 크리스마스, 생일기념<br />
+      연말 · 크리스마스 · 생일기념<br />
       거절은 거절함
+
+      <div class="divider"></div>
+
+      <strong>🎁 파티 순서</strong><br />
+      1. 음식 주문 및 스몰 토킹<br />
+      2. 사진촬영 & 저녁식사<br />
+      3. 선물교환식
+
+      <div class="divider"></div>
+
+      * 숙박 가능<br />
+      * 퇴실 시 청소 바람 (집주인이 사나움, 물림주의)
     </div>
 
     <div class="footer">
